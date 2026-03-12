@@ -1,0 +1,68 @@
+/* Update pada Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+    margin: 0;
+    padding: 40px 20px; /* Tambah padding atas bawah */
+    min-height: 100vh; /* Gunakan min-height, bukan height */
+    display: flex;
+    flex-direction: column; /* Biar card berderet ke bawah */
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Container untuk menampung semua card */
+.container {
+    display: flex;
+    flex-direction: column; /* Menyusun card ke bawah */
+    align-items: center;    /* Card rata tengah secara horizontal */
+    gap: 25px;              /* INI KUNCINYA: Memberi jarak 25px antar card */
+    padding: 20px;          /* Jarak container dengan tepi layar */
+    width: 100%;
+}
+
+/* Card Styling (Disesuaikan) */
+.card {
+    margin-bottom: 10px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-sizing: border-box;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    background: #ffffff;
+}
+
+/* Dekorasi Ikon/Emoji di pojok card */
+.card::after {
+    content: '🦁'; /* Emoji macan sesuai teks kamu */
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    font-size: 5rem;
+    opacity: 0.05; /* Biar samar jadi watermark */
+    transform: rotate(-15deg);
+}
+
+/* Styling Teks di Dalam Card */
+.card h2 {
+    color: #4834d4;
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.card p {
+    margin: 5px 0;
+    color: #555;
+    text-align: center; /* Sesuaikan dengan gambar kamu */
+}
