@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+// tes
 export default function HitungGajiForm() {
   const [gaji, setGaji] = useState("");
   const pajak = 0.11;
