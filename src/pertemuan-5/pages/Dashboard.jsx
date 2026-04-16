@@ -9,8 +9,7 @@ export default function Dashboard() {
       <div id="dashboard-grid" className="p-5 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
         <div
           id="dashboard-orders"
-          className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4"
-        >
+          className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
           <div id="orders-icon" className="bg-hijau rounded-full p-4">
             <FaShoppingCart className="text-3xl text-white" />
           </div>
@@ -26,8 +25,7 @@ export default function Dashboard() {
 
         <div
           id="dashboard-delivered"
-          className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4"
-        >
+          className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
           <div id="delivered-icon" className="bg-biru rounded-full p-4">
             <FaTruck className="text-3xl text-white" />
           </div>
@@ -43,8 +41,7 @@ export default function Dashboard() {
 
         <div
           id="dashboard-canceled"
-          className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4"
-        >
+          className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
           <div id="canceled-icon" className="bg-merah rounded-full p-4">
             <FaBan className="text-3xl text-white" />
           </div>
@@ -60,8 +57,7 @@ export default function Dashboard() {
 
         <div
           id="dashboard-revenue"
-          className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4"
-        >
+          className="flex items-center space-x-5 bg-white rounded-lg shadow-md p-4">
           <div id="revenue-icon" className="bg-kuning rounded-full p-4">
             <FaDollarSign className="text-3xl text-white" />
           </div>
