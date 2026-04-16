@@ -8,7 +8,6 @@ export default function Header() {
       id="header-container"
       className="flex justify-between items-center p-4"
     >
-      {/* Search Bar */}
       <div id="search-bar" className="relative w-full max-w-lg">
         <input
           id="search-input"
@@ -25,7 +24,6 @@ export default function Header() {
       {/* Icon & Profile Section */}
       <div id="icons-container" className="flex items-center space-x-4">
         
-        {/* Notification */}
         <div
           id="notification-icon"
           className="relative p-3 bg-blue-100 rounded-2xl text-blue-500 cursor-pointer"
@@ -39,7 +37,6 @@ export default function Header() {
           </span>
         </div>
 
-        {/* Chart */}
         <div
           id="chart-icon"
           className="p-3 bg-blue-100 rounded-2xl cursor-pointer"
@@ -47,7 +44,6 @@ export default function Header() {
           <FcAreaChart />
         </div>
 
-        {/* Settings */}
         <div
           id="settings-icon"
           className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer"
@@ -55,7 +51,6 @@ export default function Header() {
           <SlSettings />
         </div>
 
-        {/* Profile */}
         <div
           id="profile-container"
           className="flex items-center space-x-4 border-l pl-4 border-gray-300"
