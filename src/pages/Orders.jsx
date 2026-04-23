@@ -1,93 +1,51 @@
 import React from "react";
 import PageHeader from "../components/PageHeader";
-import { FaEye, FaDownload } from "react-icons/fa";
 
 export default function Orders() {
-  // Data dummy pesanan
-  const orders = [
-    {
-      id: "#ORD-7712",
-      customer: "Joy",
-      date: "23 Apr 2026",
-      amount: "Rp 150.000",
-      status: "Completed",
-    },
-    {
-      id: "#ORD-7713",
-      customer: "JOy",
-      date: "23 Apr 2026",
-      amount: "Rp 85.000",
-      status: "Pending",
-    },
-    {
-      id: "#ORD-7714",
-      customer: "JOY",
-      date: "22 Apr 2026",
-      amount: "Rp 210.000",
-      status: "On Delivery",
-    },
-    {
-      id: "#ORD-7715",
-      customer: "JOYY",
-      date: "21 Apr 2026",
-      amount: "Rp 45.000",
-      status: "Cancelled",
-    },
-  ];
-
-  // Helper untuk warna status
-  const getStatusStyle = (status) => {
-    switch (status) {
-      case "Completed": return "bg-green-100 text-green-600";
-      case "Pending": return "bg-yellow-100 text-yellow-600";
-      case "On Delivery": return "bg-blue-100 text-blue-600";
-      case "Cancelled": return "bg-red-100 text-red-600";
-      default: return "bg-gray-100 text-gray-600";
-    }
-  };
+  const dataOrders = Array.from({ length: 30 }, (_, i) => ({
+    id: `#ORD-${1000 + i}`,
+    customerName: ["Ahmad Dhani", "Budi Doremi", "Citra Scholastika", "Dedi Corbuzier", "Eka Gustiwana"][i % 5],
+    status: ["Pending", "Completed", "Cancelled"][i % 3],
+    totalPrice: `Rp ${(Math.floor(Math.random() * 50) + 10) * 1000}`,
+    date: `${(i % 28) + 1} April 2026`
+  }));
 
   return (
-    <div id="orders-container" className="bg-gray-50 min-h-screen">
-      <PageHeader />
-
-      <div className="p-10">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900">Orders</h1>
-          <button className="bg-hijau text-white px-6 py-2 rounded-xl font-semibold shadow-md hover:opacity-90 transition">
-            Export Report
-          </button>
-        </div>
-
+    <div className="min-h-screen bg-gray-50">
+      <PageHeader title="Orders List" breadcrumb={[ "Orders"]}>
+        <button 
+          onClick={() => alert(JSON.stringify(dataOrders[0], null, 2))}
+          className="bg-hijau text-white px-5 py-2 rounded-xl font-bold shadow-md hover:opacity-90"
+        >
+          + Add Orders
+        </button>
+      </PageHeader>
+      
+      <div className="p-6">
         <div className="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
           <table className="w-full text-left">
-            <thead className="bg-gray-50 border-b border-gray-100">
+            <thead className="bg-gray-50 text-gray-400 text-xs uppercase font-bold">
               <tr>
-                <th className="px-8 py-5 text-sm font-bold text-gray-600">Order ID</th>
-                <th className="px-8 py-5 text-sm font-bold text-gray-600">Customer</th>
-                <th className="px-8 py-5 text-sm font-bold text-gray-600">Date</th>
-                <th className="px-8 py-5 text-sm font-bold text-gray-600">Amount</th>
-                <th className="px-8 py-5 text-sm font-bold text-gray-600">Status</th>
-                <th className="px-8 py-5 text-sm font-bold text-gray-600 text-center">Action</th>
+                <th className="px-6 py-4">Order ID</th>
+                <th className="px-6 py-4">Customer Name</th>
+                <th className="px-6 py-4">Status</th>
+                <th className="px-6 py-4">Total Price</th>
+                <th className="px-6 py-4">Date</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-50">
-              {orders.map((order) => (
-                <tr key={order.id} className="hover:bg-gray-50/50 transition">
-                  <td className="px-8 py-5 font-bold text-hijau">{order.id}</td>
-                  <td className="px-8 py-5 font-medium text-gray-800">{order.customer}</td>
-                  <td className="px-8 py-5 text-gray-500">{order.date}</td>
-                  <td className="px-8 py-5 font-bold text-gray-800">{order.amount}</td>
-                  <td className="px-8 py-5">
-                    <span className={`px-4 py-1.5 rounded-full text-xs font-extrabold ${getStatusStyle(order.status)}`}>
-                      {order.status}
-                    </span>
+            <tbody className="divide-y divide-gray-50 text-sm">
+              {dataOrders.map((item) => (
+                <tr key={item.id} className="hover:bg-gray-50 transition">
+                  <td className="px-6 py-4 font-bold text-hijau">{item.id}</td>
+                  <td className="px-6 py-4 font-semibold text-gray-700">{item.customerName}</td>
+                  <td className="px-6 py-4">
+                    <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase ${
+                      item.status === 'Completed' ? 'bg-green-100 text-green-600' : 
+                      item.status === 'Pending' ? 'bg-yellow-100 text-yellow-600' : 'bg-red-100 text-red-600'
+                    }`}>{item.status}</span>
                   </td>
-                  <td className="px-8 py-5">
-                    <div className="flex justify-center space-x-3 text-gray-400">
-                      <button className="hover:text-hijau transition"><FaEye /></button>
-                      <button className="hover:text-blue-500 transition"><FaDownload /></button>
-                    </div>
-                  </td>
+                  <td className="px-6 py-4 font-bold">{item.totalPrice}</td>
+                  <td className="px-6 py-4 text-gray-400">{item.date}</td>
                 </tr>
               ))}
             </tbody>
