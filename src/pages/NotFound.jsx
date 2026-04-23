@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+// testt sebelum di ubah 
 export default function ErrorPage({ code, title, description, image }) {
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] text-center p-10 bg-gray-50">
