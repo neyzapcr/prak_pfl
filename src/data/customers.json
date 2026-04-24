@@ -1,0 +1,212 @@
+[
+  {
+    "customerId": "CUST-501",
+    "customerName": "Ahmad Fauzi",
+    "email": "ahmad.fauzi@sedap.com",
+    "phone": "0812-3456-7801",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-502",
+    "customerName": "Budi Santoso",
+    "email": "budi.santoso@sedap.com",
+    "phone": "0812-3456-7802",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-503",
+    "customerName": "Citra Lestari",
+    "email": "citra.lestari@sedap.com",
+    "phone": "0812-3456-7803",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-504",
+    "customerName": "Dinda Maharani",
+    "email": "dinda.maharani@sedap.com",
+    "phone": "0812-3456-7804",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-505",
+    "customerName": "Eko Prasetyo",
+    "email": "eko.prasetyo@sedap.com",
+    "phone": "0812-3456-7805",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-506",
+    "customerName": "Farah Nabila",
+    "email": "farah.nabila@sedap.com",
+    "phone": "0812-3456-7806",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-507",
+    "customerName": "Galih Ramadhan",
+    "email": "galih.ramadhan@sedap.com",
+    "phone": "0812-3456-7807",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-508",
+    "customerName": "Hana Safitri",
+    "email": "hana.safitri@sedap.com",
+    "phone": "0812-3456-7808",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-509",
+    "customerName": "Indra Wijaya",
+    "email": "indra.wijaya@sedap.com",
+    "phone": "0812-3456-7809",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-510",
+    "customerName": "Jihan Aulia",
+    "email": "jihan.aulia@sedap.com",
+    "phone": "0812-3456-7810",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-511",
+    "customerName": "Kevin Saputra",
+    "email": "kevin.saputra@sedap.com",
+    "phone": "0812-3456-7811",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-512",
+    "customerName": "Laila Putri",
+    "email": "laila.putri@sedap.com",
+    "phone": "0812-3456-7812",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-513",
+    "customerName": "M Rizky",
+    "email": "m.rizky@sedap.com",
+    "phone": "0812-3456-7813",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-514",
+    "customerName": "Nabila Sari",
+    "email": "nabila.sari@sedap.com",
+    "phone": "0812-3456-7814",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-515",
+    "customerName": "Oka Mahendra",
+    "email": "oka.mahendra@sedap.com",
+    "phone": "0812-3456-7815",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-516",
+    "customerName": "Putri Azzahra",
+    "email": "putri.azzahra@sedap.com",
+    "phone": "0812-3456-7816",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-517",
+    "customerName": "Qori Amelia",
+    "email": "qori.amelia@sedap.com",
+    "phone": "0812-3456-7817",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-518",
+    "customerName": "Raka Nugraha",
+    "email": "raka.nugraha@sedap.com",
+    "phone": "0812-3456-7818",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-519",
+    "customerName": "Salsa Aulia",
+    "email": "salsa.aulia@sedap.com",
+    "phone": "0812-3456-7819",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-520",
+    "customerName": "Tegar Ramadhan",
+    "email": "tegar.ramadhan@sedap.com",
+    "phone": "0812-3456-7820",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-521",
+    "customerName": "Ulfa Khairani",
+    "email": "ulfa.khairani@sedap.com",
+    "phone": "0812-3456-7821",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-522",
+    "customerName": "Vino Pratama",
+    "email": "vino.pratama@sedap.com",
+    "phone": "0812-3456-7822",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-523",
+    "customerName": "Wulan Sari",
+    "email": "wulan.sari@sedap.com",
+    "phone": "0812-3456-7823",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-524",
+    "customerName": "Yoga Pranata",
+    "email": "yoga.pranata@sedap.com",
+    "phone": "0812-3456-7824",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-525",
+    "customerName": "Zahra Nabila",
+    "email": "zahra.nabila@sedap.com",
+    "phone": "0812-3456-7825",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-526",
+    "customerName": "Ardiansyah",
+    "email": "ardiansyah@sedap.com",
+    "phone": "0812-3456-7826",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-527",
+    "customerName": "Bella Maharani",
+    "email": "bella.maharani@sedap.com",
+    "phone": "0812-3456-7827",
+    "loyalty": "Gold"
+  },
+  {
+    "customerId": "CUST-528",
+    "customerName": "Cahyo Saputro",
+    "email": "cahyo.saputro@sedap.com",
+    "phone": "0812-3456-7828",
+    "loyalty": "Bronze"
+  },
+  {
+    "customerId": "CUST-529",
+    "customerName": "Dewi Anggraini",
+    "email": "dewi.anggraini@sedap.com",
+    "phone": "0812-3456-7829",
+    "loyalty": "Silver"
+  },
+  {
+    "customerId": "CUST-530",
+    "customerName": "Fikri Maulana",
+    "email": "fikri.maulana@sedap.com",
+    "phone": "0812-3456-7830",
+    "loyalty": "Gold"
+  }
+]

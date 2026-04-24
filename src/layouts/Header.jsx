@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { FaBell, FaSearch } from "react-icons/fa";
+import { FaBell, FaSearch, FaCheckCircle, FaTimes } from "react-icons/fa";
 import { FcAreaChart } from "react-icons/fc";
 import { SlSettings } from "react-icons/sl";
 
@@ -7,6 +7,7 @@ export default function Header() {
   const [showNotif, setShowNotif] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [isSearchFocus, setIsSearchFocus] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const notifRef = useRef(null);
 
   const notifications = [
@@ -32,6 +33,13 @@ export default function Header() {
     },
   ];
 
+  const handleShowToast = () => {
+    setShowToast(false);
+    setTimeout(() => {
+      setShowToast(true);
+    }, 50);
+  };
+
   useEffect(() => {
     function handleClickOutside(event) {
       if (notifRef.current && !notifRef.current.contains(event.target)) {
@@ -45,151 +53,241 @@ export default function Header() {
     };
   }, []);
 
+  useEffect(() => {
+    if (showToast) {
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [showToast]);
+
   return (
-    <div
-      id="header-container"
-      className="flex justify-between items-center p-4 gap-4"
-    >
-      <div id="search-bar" className="relative w-full max-w-lg">
-        <input
-          id="search-input"
-          type="text"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-          onFocus={() => setIsSearchFocus(true)}
-          onBlur={() => setIsSearchFocus(false)}
-          placeholder="Search Here..."
-          className={`border p-2 pr-10 bg-white w-full max-w-lg rounded-md outline-none transition ${
-            isSearchFocus
-              ? "border-hijau ring-2 ring-green-100"
-              : "border-gray-100"
-          }`}
-        />
-        <FaSearch
-          id="search-icon"
-          className={`absolute right-4 top-1/2 transform -translate-y-1/2 ${
-            isSearchFocus ? "text-hijau" : "text-gray-300"
-          }`}
-        />
-
-        {searchValue && (
-          <div
-            id="search-suggestion"
-            className="absolute top-12 left-0 w-full bg-white rounded-xl shadow-lg border border-gray-100 p-3 z-20"
-          >
-            <p className="text-sm text-gray-400 mb-2">Hasil pencarian cepat</p>
-            <div className="space-y-2 text-sm text-gray-600">
-              <div className="p-2 rounded-lg hover:bg-gray-50 cursor-pointer">
-                Cari: <b>{searchValue}</b>
-              </div>
-              <div className="p-2 rounded-lg hover:bg-gray-50 cursor-pointer">
-                Order List terkait "{searchValue}"
-              </div>
-              <div className="p-2 rounded-lg hover:bg-gray-50 cursor-pointer">
-                Customer terkait "{searchValue}"
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div id="icons-container" className="flex items-center space-x-4 relative">
-        <div className="relative" ref={notifRef}>
-          <button
-            id="notification-icon"
-            onClick={() => setShowNotif(!showNotif)}
-            className="relative p-3 bg-blue-100 rounded-2xl text-blue-500 cursor-pointer hover:scale-105 transition"
-          >
-            <FaBell />
-            <span
-              id="notification-badge"
-              className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-blue-200 rounded-full min-w-6 h-6 px-1 flex items-center justify-center text-xs font-semibold"
-            >
-              4
-            </span>
-          </button>
-
-          <div
-            id="notification-popup"
-            className={`absolute top-16 right-0 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 z-30 transition-all duration-300 origin-top ${
-              showNotif
-                ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
-                : "opacity-0 -translate-y-3 scale-95 pointer-events-none"
+    <>
+      <div
+        id="header-container"
+        className="flex justify-between items-center p-4 gap-4"
+      >
+        <div id="search-bar" className="relative w-full max-w-lg">
+          <input
+            id="search-input"
+            type="text"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
+            onFocus={() => setIsSearchFocus(true)}
+            onBlur={() => setIsSearchFocus(false)}
+            placeholder="Search Here..."
+            className={`border p-2 pr-10 bg-white w-full max-w-lg rounded-md outline-none transition ${
+              isSearchFocus
+                ? "border-hijau ring-2 ring-green-100"
+                : "border-gray-100"
             }`}
-          >
-            <div className="p-4 border-b border-gray-100 flex items-center justify-between">
-              <div>
-                <h3 className="font-semibold text-gray-700">Notifications</h3>
-                <p className="text-xs text-gray-400">Ada 4 notifikasi baru</p>
+          />
+          <FaSearch
+            id="search-icon"
+            className={`absolute right-4 top-1/2 transform -translate-y-1/2 ${
+              isSearchFocus ? "text-hijau" : "text-gray-300"
+            }`}
+          />
+
+          {searchValue && (
+            <div
+              id="search-suggestion"
+              className="absolute top-12 left-0 w-full bg-white rounded-xl shadow-lg border border-gray-100 p-3 z-20"
+            >
+              <p className="text-sm text-gray-400 mb-2">
+                Hasil pencarian cepat
+              </p>
+              <div className="space-y-2 text-sm text-gray-600">
+                <div className="p-2 rounded-lg hover:bg-gray-50 cursor-pointer">
+                  Cari: <b>{searchValue}</b>
+                </div>
+                <div className="p-2 rounded-lg hover:bg-gray-50 cursor-pointer">
+                  Order List terkait "{searchValue}"
+                </div>
+                <div className="p-2 rounded-lg hover:bg-gray-50 cursor-pointer">
+                  Customer terkait "{searchValue}"
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div id="icons-container" className="flex items-center space-x-4 relative">
+          <div className="relative" ref={notifRef}>
+            <button
+              id="notification-icon"
+              onClick={() => setShowNotif(!showNotif)}
+              className="relative p-3 bg-blue-100 rounded-2xl text-blue-500 cursor-pointer hover:scale-105 transition"
+            >
+              <FaBell />
+              <span
+                id="notification-badge"
+                className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-blue-200 rounded-full min-w-6 h-6 px-1 flex items-center justify-center text-xs font-semibold"
+              >
+                4
+              </span>
+            </button>
+
+            {/* tombol kecil tambahan untuk toast */}
+            <button
+              onClick={handleShowToast}
+              className="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-hijau text-white text-xs font-bold flex items-center justify-center shadow-md hover:scale-110 transition"
+            >
+              +
+            </button>
+
+            <div
+              id="notification-popup"
+              className={`absolute top-16 right-0 w-80 bg-white rounded-2xl shadow-xl border border-gray-100 z-30 transition-all duration-300 origin-top ${
+                showNotif
+                  ? "opacity-100 translate-y-0 scale-100 pointer-events-auto"
+                  : "opacity-0 -translate-y-3 scale-95 pointer-events-none"
+              }`}
+            >
+              <div className="p-4 border-b border-gray-100 flex items-center justify-between">
+                <div>
+                  <h3 className="font-semibold text-gray-700">
+                    Notifications
+                  </h3>
+                  <p className="text-xs text-gray-400">
+                    Ada 4 notifikasi baru
+                  </p>
+                </div>
+
+                <button
+                  onClick={() => setShowNotif(false)}
+                  className="text-xs px-3 py-1 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 transition"
+                >
+                  Tutup
+                </button>
               </div>
 
-              <button
-                onClick={() => setShowNotif(false)}
-                className="text-xs px-3 py-1 rounded-lg bg-red-50 text-red-500 hover:bg-red-100 transition"
-              >
-                Tutup
-              </button>
-            </div>
+              <div className="max-h-80 overflow-y-auto p-3 space-y-3">
+                {notifications.map((item, index) => (
+                  <div
+                    key={index}
+                    className="rounded-xl border border-gray-100 p-3 hover:bg-blue-50 transition cursor-pointer"
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div className="flex-1">
+                        <h4 className="text-sm font-semibold text-gray-700">
+                          {item.title}
+                        </h4>
+                        <p className="text-sm text-gray-500 mt-1">
+                          {item.desc}
+                        </p>
+                      </div>
 
-            <div className="max-h-80 overflow-y-auto p-3 space-y-3">
-              {notifications.map((item, index) => (
-                <div
-                  key={index}
-                  className="rounded-xl border border-gray-100 p-3 hover:bg-blue-50 transition cursor-pointer"
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div className="flex-1">
-                      <h4 className="text-sm font-semibold text-gray-700">
-                        {item.title}
-                      </h4>
-                      <p className="text-sm text-gray-500 mt-1">{item.desc}</p>
+                      <span className="w-2 h-2 rounded-full bg-blue-500 mt-2"></span>
                     </div>
 
-                    <span className="w-2 h-2 rounded-full bg-blue-500 mt-2"></span>
+                    <p className="text-xs text-gray-400 mt-2">{item.time}</p>
                   </div>
+                ))}
+              </div>
 
-                  <p className="text-xs text-gray-400 mt-2">{item.time}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="p-3 border-t border-gray-100 bg-gray-50 rounded-b-2xl">
-              <button className="w-full py-2 rounded-xl bg-blue-500 text-white hover:opacity-90 transition">
-                Lihat Semua Notifikasi
-              </button>
+              <div className="p-3 border-t border-gray-100 bg-gray-50 rounded-b-2xl">
+                <button className="w-full py-2 rounded-xl bg-blue-500 text-white hover:opacity-90 transition">
+                  Lihat Semua Notifikasi
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div
-          id="chart-icon"
-          className="p-3 bg-blue-100 rounded-2xl cursor-pointer hover:scale-105 transition"
-        >
-          <FcAreaChart />
-        </div>
+          <div
+            id="chart-icon"
+            className="p-3 bg-blue-100 rounded-2xl cursor-pointer hover:scale-105 transition"
+          >
+            <FcAreaChart />
+          </div>
 
-        <div
-          id="settings-icon"
-          className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer hover:scale-105 transition"
-        >
-          <SlSettings />
-        </div>
+          <div
+            id="settings-icon"
+            className="p-3 bg-red-100 rounded-2xl text-red-500 cursor-pointer hover:scale-105 transition"
+          >
+            <SlSettings />
+          </div>
 
-        <div
-          id="profile-container"
-          className="flex items-center space-x-4 border-l pl-4 border-gray-300"
-        >
-          <span id="profile-text">
-            Hello, <b>Fikri Muhaffizh</b>
-          </span>
-          <img
-            id="profile-avatar"
-            src="/img/avatar1.png"
-            alt="avatar"
-            className="w-10 h-10 rounded-full"
-          />
+          <div
+            id="profile-container"
+            className="flex items-center space-x-4 border-l pl-4 border-gray-300"
+          >
+            <span id="profile-text">
+              Hello, <b>Fikri Muhaffizh</b>
+            </span>
+            <img
+              id="profile-avatar"
+              src="/img/avatar1.png"
+              alt="avatar"
+              className="w-10 h-10 rounded-full"
+            />
+          </div>
         </div>
       </div>
-    </div>
+
+      <div
+        id="toast-wrapper"
+        className={`fixed bottom-6 right-6 z-50 transition-all duration-500 ${
+          showToast
+            ? "translate-y-0 opacity-100"
+            : "translate-y-12 opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="w-[350px] overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-2xl">
+          <div className="flex items-start gap-3 p-4">
+            <div className="text-xl text-hijau">
+              <FaCheckCircle />
+            </div>
+
+            <div className="flex-1">
+              <h3 className="text-sm font-bold text-gray-800">
+                Pesanan Baru Masuk
+              </h3>
+              <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+                Ada pesanan baru dari <b>Meja 07</b>. Silakan buka halaman order
+                untuk segera memproses pesanan pelanggan.
+              </p>
+
+              <div className="mt-3 flex items-center gap-2">
+                <span className="text-xs font-semibold text-hijau bg-green-50 px-2 py-1 rounded-md">
+                  Baru saja
+                </span>
+                <span className="text-xs text-gray-400">
+                  Restaurant Notification
+                </span>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setShowToast(false)}
+              className="text-gray-400 hover:text-red-500"
+            >
+              <FaTimes />
+            </button>
+          </div>
+
+          <div className="h-1 w-full bg-gray-100">
+            <div
+              className={`h-1 bg-hijau ${
+                showToast ? "animate-[toastbar_4s_linear]" : ""
+              }`}
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        @keyframes toastbar {
+          from {
+            width: 100%;
+          }
+          to {
+            width: 0%;
+          }
+        }
+      `}</style>
+    </>
   );
 }
