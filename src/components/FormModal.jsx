@@ -9,9 +9,8 @@ export default function FormModal({ isOpen, title, onClose, children }) {
 
           <button
             onClick={onClose}
-            className="rounded-lg bg-red-50 px-3 py-1 text-sm font-semibold text-red-500 hover:bg-red-100"
-          >
-            Tutup
+            className="rounded-lg bg-red-50 px-3 py-1 text-sm font-semibold text-red-500 hover:bg-red-100">
+            ❌
           </button>
         </div>
 

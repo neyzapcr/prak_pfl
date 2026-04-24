@@ -27,10 +27,8 @@ function App() {
                 <ErrorPage
                   code="400"
                   description="Bad request! Data yang dikirim tidak valid."
-                  image="/img/error-400.png"
-                />
-              }
-            />
+                  image="/img/error-400.png"/>
+              }/>
 
             <Route
               path="/error-401"
@@ -38,10 +36,8 @@ function App() {
                 <ErrorPage
                   code="401"
                   description="Unauthorized! Kamu belum memiliki akses."
-                  image="/img/error-401.png"
-                />
-              }
-            />
+                  image="/img/error-401.png"/>
+              }/>
 
             <Route
               path="/error-403"
@@ -49,10 +45,8 @@ function App() {
                 <ErrorPage
                   code="403"
                   description="Forbidden! Kamu tidak diizinkan membuka halaman ini."
-                  image="/img/error-403.png"
-                />
-              }
-            />
+                  image="/img/error-403.png"/>
+              }/>
 
             <Route
               path="*"
@@ -60,10 +54,8 @@ function App() {
                 <ErrorPage
                   code="404"
                   description="What are you doing here?!"
-                  image="/img/error-404.png"
-                />
-              }
-            />
+                  image="/img/error-404.png"/>
+              }/>
           </Routes>
         </div>
       </div>

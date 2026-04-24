@@ -31,8 +31,7 @@ export default function ErrorPage({
 
         <div className="group mt-6 flex items-center justify-center gap-4">
           <span
-            className={`text-[115px] font-black leading-none md:text-[155px] ${getColor()}`}
-          >
+            className={`text-[115px] font-black leading-none md:text-[155px] ${getColor()}`}>
             {firstNumber}
           </span>
           <div className="relative flex h-28 w-28 items-center justify-center md:h-36 md:w-36">
@@ -40,7 +39,6 @@ export default function ErrorPage({
               className={`absolute text-[115px] font-black leading-none md:text-[155px] ${getColor()}`}
             ></span>
 
-            {/* blur glow di belakang gambar */}
             <div
               className={`absolute z-0 h-32 w-32 md:h-44 md:w-44 rounded-full blur-3xl opacity-0 scale-75 transition-all duration-500 group-hover:opacity-100 group-hover:scale-150 ${
                 codeText === "400"
@@ -56,21 +54,18 @@ export default function ErrorPage({
             <img
               src={image}
               alt={`Error ${codeText}`}
-              className="relative z-10 h-28 w-28 rounded-[28px] object-cover transition-all duration-500 ease-out group-hover:-translate-y-4 group-hover:scale-110 group-hover:rotate-3 md:h-36 md:w-36"
-            />
+              className="relative z-10 h-28 w-28 rounded-[28px] object-cover transition-all duration-500 ease-out group-hover:-translate-y-4 group-hover:scale-110 group-hover:rotate-3 md:h-36 md:w-36"/>
           </div>
 
           <span
-            className={`text-[115px] font-black leading-none md:text-[155px] ${getColor()}`}
-          >
+            className={`text-[115px] font-black leading-none md:text-[155px] ${getColor()}`}>
             {lastNumber}
           </span>
         </div>
 
         <Link
           to="/"
-          className="mt-8 flex items-center gap-2 rounded-full border-2 border-gray-800 bg-purple-50 px-5 py-2 text-sm font-semibold text-gray-800 shadow-md transition hover:bg-purple-100 hover:scale-105"
-        >
+          className="mt-8 flex items-center gap-2 rounded-full border-2 border-gray-800 bg-purple-50 px-5 py-2 text-sm font-semibold text-gray-800 shadow-md transition hover:bg-purple-100 hover:scale-105">
           <FaArrowLeft />
           Kembali ke Dashboard
         </Link>

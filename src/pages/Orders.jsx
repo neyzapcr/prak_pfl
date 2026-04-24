@@ -67,11 +67,10 @@ export default function Orders() {
     <div className="min-h-screen bg-gray-50">
       <PageHeader title="Orders" breadcrumb={["Orders"]}>
         <button
-  onClick={openAddModal}
-  className="bg-hijau text-white px-5 py-2 rounded-xl font-semibold shadow-md hover:opacity-90 transition"
->
-  + Add Orders
-</button>
+          onClick={openAddModal}
+          className="bg-hijau text-white px-5 py-2 rounded-xl font-semibold shadow-md hover:opacity-90 transition">
+          + Add Orders
+        </button>
       </PageHeader>
 
       <div className="p-6">
@@ -90,12 +89,16 @@ export default function Orders() {
             <tbody className="divide-y divide-gray-50 text-sm">
               {orders.map((order, index) => (
                 <tr key={order.orderId} className="transition hover:bg-gray-50">
-                  <td className="px-6 py-4 font-bold text-hijau">{order.orderId}</td>
-                  <td className="px-6 py-4 font-semibold text-gray-700">{order.customerName}</td>
+                  <td className="px-6 py-4 font-bold text-hijau">
+                    {order.orderId}
+                  </td>
+                  <td className="px-6 py-4 font-semibold text-gray-700">
+                    {order.customerName}
+                  </td>
                   <td className="px-6 py-4">
                     <span
                       className={`rounded-full px-3 py-1 text-[10px] font-black uppercase ${getStatusClass(
-                        order.status
+                        order.status,
                       )}`}
                     >
                       {order.status}
@@ -108,8 +111,7 @@ export default function Orders() {
                   <td className="px-6 py-4">
                     <button
                       onClick={() => openEditModal(order, index)}
-                      className="rounded-xl bg-blue-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-600"
-                    >
+                      className="rounded-xl bg-blue-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-600">
                       Edit
                     </button>
                   </td>
@@ -123,9 +125,10 @@ export default function Orders() {
       <FormModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        title={selectedIndex !== null ? "Edit Order" : "Add Orders"}
-      >
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        title={selectedIndex !== null ? "Edit Order" : "Add Orders"}>
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <input
             type="text"
             name="orderId"
@@ -133,8 +136,7 @@ export default function Orders() {
             onChange={handleChange}
             placeholder="Order ID"
             className="rounded-xl border border-gray-200 p-3 outline-none"
-            required
-          />
+            required/>
 
           <input
             type="text"
@@ -143,15 +145,13 @@ export default function Orders() {
             onChange={handleChange}
             placeholder="Customer Name"
             className="rounded-xl border border-gray-200 p-3 outline-none"
-            required
-          />
+            required/>
 
           <select
             name="status"
             value={formData.status}
             onChange={handleChange}
-            className="rounded-xl border border-gray-200 p-3 outline-none"
-          >
+            className="rounded-xl border border-gray-200 p-3 outline-none">
             <option value="Pending">Pending</option>
             <option value="Completed">Completed</option>
             <option value="Cancelled">Cancelled</option>
@@ -164,8 +164,7 @@ export default function Orders() {
             onChange={handleChange}
             placeholder="Total Price"
             className="rounded-xl border border-gray-200 p-3 outline-none"
-            required
-          />
+            required/>
 
           <input
             type="date"
@@ -173,22 +172,19 @@ export default function Orders() {
             value={formData.orderDate}
             onChange={handleChange}
             className="rounded-xl border border-gray-200 p-3 outline-none md:col-span-2"
-            required
-          />
+            required/>
 
           <div className="md:col-span-2 flex gap-3">
             <button
               type="submit"
-              className="rounded-xl bg-hijau px-5 py-3 font-bold text-white"
-            >
+              className="rounded-xl bg-hijau px-5 py-3 font-bold text-white">
               {selectedIndex !== null ? "Update Order" : "Simpan Order"}
             </button>
 
             <button
               type="button"
               onClick={closeModal}
-              className="rounded-xl bg-gray-200 px-5 py-3 font-bold text-gray-700"
-            >
+              className="rounded-xl bg-gray-200 px-5 py-3 font-bold text-gray-700">
               Batal
             </button>
           </div>

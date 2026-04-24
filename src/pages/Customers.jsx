@@ -53,7 +53,6 @@ export default function Customers() {
     } else {
       setCustomers([formData, ...customers]);
     }
-
     closeModal();
   };
 
@@ -68,8 +67,7 @@ export default function Customers() {
       <PageHeader title="Customers" breadcrumb={["Customers"]}>
         <button
           onClick={openAddModal}
-          className="bg-hijau text-white px-5 py-2 rounded-xl font-semibold shadow-md hover:opacity-90 transition"
-        >
+          className="bg-hijau text-white px-5 py-2 rounded-xl font-semibold shadow-md hover:opacity-90 transition">
           + Add Customer
         </button>
       </PageHeader>
@@ -105,16 +103,14 @@ export default function Customers() {
                     <span
                       className={`rounded-lg px-4 py-1 text-xs font-bold ${getLoyaltyClass(
                         customer.loyalty,
-                      )}`}
-                    >
+                      )}`}>
                       {customer.loyalty}
                     </span>
                   </td>
                   <td className="px-8 py-5">
                     <button
                       onClick={() => openEditModal(customer, index)}
-                      className="rounded-xl bg-blue-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-600"
-                    >
+                      className="rounded-xl bg-blue-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-600">
                       Edit
                     </button>
                   </td>
@@ -128,12 +124,10 @@ export default function Customers() {
       <FormModal
         isOpen={isModalOpen}
         onClose={closeModal}
-        title={selectedIndex !== null ? "Edit Customer" : "Add Customer"}
-      >
+        title={selectedIndex !== null ? "Edit Customer" : "Add Customer"}>
         <form
           onSubmit={handleSubmit}
-          className="grid grid-cols-1 gap-4 md:grid-cols-2"
-        >
+          className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <input
             type="text"
             name="customerId"
@@ -141,8 +135,7 @@ export default function Customers() {
             onChange={handleChange}
             placeholder="Customer ID"
             className="rounded-xl border border-gray-200 p-3 outline-none"
-            required
-          />
+            required/>
 
           <input
             type="text"
@@ -151,8 +144,7 @@ export default function Customers() {
             onChange={handleChange}
             placeholder="Customer Name"
             className="rounded-xl border border-gray-200 p-3 outline-none"
-            required
-          />
+            required/>
 
           <input
             type="email"
@@ -161,8 +153,7 @@ export default function Customers() {
             onChange={handleChange}
             placeholder="Email"
             className="rounded-xl border border-gray-200 p-3 outline-none"
-            required
-          />
+            required/>
 
           <input
             type="text"
@@ -171,15 +162,13 @@ export default function Customers() {
             onChange={handleChange}
             placeholder="Phone"
             className="rounded-xl border border-gray-200 p-3 outline-none"
-            required
-          />
+            required/>
 
           <select
             name="loyalty"
             value={formData.loyalty}
             onChange={handleChange}
-            className="rounded-xl border border-gray-200 p-3 outline-none md:col-span-2"
-          >
+            className="rounded-xl border border-gray-200 p-3 outline-none md:col-span-2">
             <option value="Bronze">Bronze</option>
             <option value="Silver">Silver</option>
             <option value="Gold">Gold</option>
@@ -188,16 +177,14 @@ export default function Customers() {
           <div className="md:col-span-2 flex gap-3">
             <button
               type="submit"
-              className="rounded-xl bg-hijau px-5 py-3 font-bold text-white"
-            >
+              className="rounded-xl bg-hijau px-5 py-3 font-bold text-white"> 
               {selectedIndex !== null ? "Update Customer" : "Simpan Customer"}
             </button>
 
             <button
               type="button"
               onClick={closeModal}
-              className="rounded-xl bg-gray-200 px-5 py-3 font-bold text-gray-700"
-            >
+              className="rounded-xl bg-gray-200 px-5 py-3 font-bold text-gray-700">
               Batal
             </button>
           </div>
