@@ -1,65 +1,72 @@
 import "./assets/tailwind.css";
-import Sidebar from "./layouts/Sidebar";
-import Header from "./layouts/Header";
-import Dashboard from "./pages/Dashboard";
-import Orders from "./pages/Orders";
-import Customers from "./pages/Customers";
-import ErrorPage from "./components/ErrorPage";
+import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
+import Loading from "./components/Loading";
+import AuthLayout from "./layouts/AuthLayout";
+import Login from "./pages/auth/Login";
+
+const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
+const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+const Orders = React.lazy(() => import("./pages/Orders"));
+const Customers = React.lazy(() => import("./pages/Customers"));
+const ErrorPage = React.lazy(() => import("./components/ErrorPage"));
+const Register = React.lazy(() => import("./pages/auth/Register"));
+const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100 flex">
-      <div className="flex flex-row flex-1">
-        <Sidebar />
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/customers" element={<Customers />} />
 
-        <div className="flex-1 p-4">
-          <Header />
+          <Route
+            path="/error-400"
+            element={
+              <ErrorPage
+                code="400"
+                description="Bad request! Data yang dikirim tidak valid."
+                image="/img/error-400.png" />
+            }/>
 
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/customers" element={<Customers />} />
+          <Route
+            path="/error-401"
+            element={
+              <ErrorPage
+                code="401"
+                description="Unauthorized! Kamu belum memiliki akses."
+                image="/img/error-401.png" />
+            } />
 
-            <Route
-              path="/error-400"
-              element={
-                <ErrorPage
-                  code="400"
-                  description="Bad request! Data yang dikirim tidak valid."
-                  image="/img/error-400.png"/>
-              }/>
+          <Route
+            path="/error-403"
+            element={
+              <ErrorPage
+                code="403"
+                description="Forbidden! Kamu tidak diizinkan membuka halaman ini."
+                image="/img/error-403.png" />
+            } />
 
-            <Route
-              path="/error-401"
-              element={
-                <ErrorPage
-                  code="401"
-                  description="Unauthorized! Kamu belum memiliki akses."
-                  image="/img/error-401.png"/>
-              }/>
+          <Route
+            path="*"
+            element={
+              <ErrorPage
+                code="404"
+                description="What are you doing here?!"
+                image="/img/error-404.png" />
+            } />
+        </Route>
 
-            <Route
-              path="/error-403"
-              element={
-                <ErrorPage
-                  code="403"
-                  description="Forbidden! Kamu tidak diizinkan membuka halaman ini."
-                  image="/img/error-403.png"/>
-              }/>
-
-            <Route
-              path="*"
-              element={
-                <ErrorPage
-                  code="404"
-                  description="What are you doing here?!"
-                  image="/img/error-404.png"/>
-              }/>
-          </Routes>
-        </div>
-      </div>
-    </div>
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<Forgot />} />
+        </Route>
+      </Routes>
+    </Suspense>
+    
   );
 }
 
