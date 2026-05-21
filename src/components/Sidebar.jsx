@@ -9,10 +9,11 @@ export default function Sidebar() {
     { id: "menu-1", label: "Dashboard", to: "/", icon: <FaHome className="mr-4 text-xl" /> },
     { id: "menu-2", label: "Orders", to: "/orders", icon: <FaListAlt className="mr-4 text-xl" /> },
     { id: "menu-3", label: "Customers", to: "/customers", icon: <FaUserFriends className="mr-4 text-xl" /> },
-    { id: "menu-4", label: "Products", to: "/products", icon: <FaBoxOpen className="mr-4 text-xl" /> },
-    { id: "menu-5", label: "Error 400", to: "/error-400", icon: <FaExclamationTriangle className="mr-4 text-xl" /> },
-    { id: "menu-6", label: "Error 401", to: "/error-401", icon: <FaExclamationTriangle className="mr-4 text-xl" /> },
-    { id: "menu-7", label: "Error 403", to: "/error-403", icon: <FaExclamationTriangle className="mr-4 text-xl" /> },
+    { id: "menu-4", label: "Components", to: "/components", icon: <FaUserFriends className="mr-4 text-xl" /> },
+    { id: "menu-5", label: "Products", to: "/products", icon: <FaBoxOpen className="mr-4 text-xl" /> },
+    { id: "menu-6", label: "Error 400", to: "/error-400", icon: <FaExclamationTriangle className="mr-4 text-xl" /> },
+    { id: "menu-7", label: "Error 401", to: "/error-401", icon: <FaExclamationTriangle className="mr-4 text-xl" /> },
+    { id: "menu-8", label: "Error 403", to: "/error-403", icon: <FaExclamationTriangle className="mr-4 text-xl" /> },
   ];
 
   const menuClass = ({ isActive }) =>
