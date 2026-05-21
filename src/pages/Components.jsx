@@ -6,7 +6,7 @@ import Avatar from "../components/Avatar";
 import Container from "../components/Container";
 import Footer from "../components/Footer";
 import Card from "../components/Card";
-import ProductCard from "../components/Productcard";
+import ProductCard from "../components/ProductCard";
 import Table from "../components/Table";
 
 
