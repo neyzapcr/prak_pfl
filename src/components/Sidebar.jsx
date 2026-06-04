@@ -14,6 +14,7 @@ export default function Sidebar() {
     { id: "menu-6", label: "Error 400", to: "/error-400", icon: <FaExclamationTriangle className="mr-4 text-xl" /> },
     { id: "menu-7", label: "Error 401", to: "/error-401", icon: <FaExclamationTriangle className="mr-4 text-xl" /> },
     { id: "menu-8", label: "Error 403", to: "/error-403", icon: <FaExclamationTriangle className="mr-4 text-xl" /> },
+    { id: "menu-9", label: "Fitur XYZ", to: "/fiturxyz", icon: <FaBoxOpen className="mr-4 text-xl" /> },
   ];
 
   const menuClass = ({ isActive }) =>
