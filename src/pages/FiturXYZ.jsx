@@ -53,7 +53,6 @@ export default function Dashboard() {
       <Badge variant="outline">Outline</Badge>
     </div>
   
-
     </div>
   );
 }
