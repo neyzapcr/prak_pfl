@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { supabase } from "../../services/supabaseClient";
 import { BsFillExclamationDiamondFill } from "react-icons/bs";
 import { ImSpinner2 } from "react-icons/im";
 
@@ -27,31 +27,35 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(false);
+    setError("");
 
-    axios
-      .post("https://dummyjson.com/user/login", {
-        username: dataForm.email,
+    try {
+      const { data, error: loginError } = await supabase.auth.signInWithPassword({
+        email: dataForm.email,
         password: dataForm.password,
-      })
-      .then((response) => {
-        if (response.status !== 200) {
-          setError(response.data.message);
-          return;
-        }
-
-        navigate("/");
-      })
-      .catch((err) => {
-        if (err.response) {
-          setError(err.response.data.message || "An error occurred");
-        } else {
-          setError(err.message || "An unknown error occurred");
-        }
-      })
-      .finally(() => {
-        setLoading(false);
       });
+
+      if (loginError) throw loginError;
+
+      // Ambil data profil untuk menentukan kemana diarahkan (redirect) berdasarkan role
+      const { data: profileData, error: profileError } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", data.user.id)
+        .single();
+
+      if (profileError) throw profileError;
+
+      if (profileData.role === "admin") {
+        navigate("/");
+      } else {
+        navigate("/member/dashboard");
+      }
+    } catch (err) {
+      setError(err.message || "Gagal masuk. Periksa kembali email & password Anda.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const errorInfo = error ? (
